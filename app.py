@@ -37,10 +37,6 @@ def add_note():
 
 @app.route('/api/notes/<id>', methods=['DELETE'])
 def delete_note(id):
-    print("test")
-    print("checked--------------------",id)
-    print(type(id), len(id))
-    print(ObjectId(id))
     result = notes_collection.delete_one({"_id": ObjectId(id)})
     if result.deleted_count == 1:
         return jsonify({"message": "Note deleted successfully!"}), 200
